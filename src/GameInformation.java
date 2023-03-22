@@ -14,7 +14,7 @@ public class GameInformation {
 
     public boolean checkWord(){
 
-        UserInformation userInput = new UserInformation();
+        UserGuess userInput = new UserGuess();
         input = userInput.getGuess();
         ComputerInformation computerInput = new ComputerInformation();
         computer = computerInput.getWord();

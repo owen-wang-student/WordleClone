@@ -7,7 +7,6 @@ public class ComputerInformation {
     }
 
     public void generateWord() {
-
     }
 
     public String getWord(){
