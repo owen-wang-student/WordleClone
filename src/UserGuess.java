@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 
 /*
@@ -9,14 +10,21 @@ import java.util.Scanner;
  */
 public class UserGuess {
 
+    Scanner sc;
+    FileReader in;
+    BufferedReader br;
+
     String guess; // variable that stores user guess
+    String lineOfText; // variable that stores valid words
+    // DO I EVEN NEED THESE?
 
     /**
      * Constructor
-     * Gives default value to guess
+     * Gives default values to variables
      */
     public UserGuess(){
         guess = "";
+        lineOfText = "";
         generateGuess();
     }
 
@@ -25,9 +33,10 @@ public class UserGuess {
      * Stores guess in the guess variable
      */
     public void generateGuess(){
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
+        System.out.println(checkValidity(guess));
     }
 
     /**
@@ -43,9 +52,26 @@ public class UserGuess {
             return false;
         }
 
-        // add section on checking if it is a valid word
+        try{
+            File dataFile = new File("ValidWords.txt");
+            in = new FileReader(dataFile);
+            br = new BufferedReader(in);
+            while((lineOfText = br.readLine()) != null){
+                if(lineOfText.equals(guess)){
+                    System.out.println("VALID");
+                    return true;
+                }
+            }
+        } catch(FileNotFoundException e){
+            System.out.println("File not found");
+            System.err.println("FileNotFoundException:" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Problem reading file.");
+            System.err.println("IOException: " + e.getMessage());
+        }
 
-        return true;
+        return false;
+
     }
 
     public String getGuess(){
