@@ -3,10 +3,9 @@ import java.util.Scanner;
 
 /*
  * UserGuess.java
- * UserGuess class contains methods to receive the user's input and
- * determine its validity
+ * UserGuess class contains methods to receive the user's input and determine its validity
  * Owen Wang
- * Last Edited: 21/03/2023
+ * Last Edited: 24/03/2023
  */
 public class UserGuess {
 
@@ -14,45 +13,46 @@ public class UserGuess {
     FileReader in;
     BufferedReader br;
 
-    String guess; // variable that stores user guess
-    String lineOfText; // variable that stores valid words
-    // DO I EVEN NEED THESE?
+    String guess;
+    String lineOfText;
 
     /**
      * Constructor
-     * Gives default values to variables
+     * Gives guess and lineOFText default values
      */
     public UserGuess(){
         guess = "";
         lineOfText = "";
-        generateGuess();
+        setGuess();
     }
 
     /**
      * Prompts the user for their guess
      * Stores guess in the guess variable
      */
-    public void generateGuess(){
+    public void setGuess(){
         sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
-        System.out.println(checkValidity(guess));
+        System.out.println(checkValidity());
     }
 
     /**
      * Checks the validity of word
      *
-     * @param guess -  the user's guess
      * @return - validity of guess
      */
-    public boolean checkValidity(String guess){
-
+    public boolean checkValidity(){
         if(guess.length() != 5){ //determines if word length is valid
-            System.out.println("The word you entered is not valid");
+            if(guess.length() > 5){
+                System.out.println("The word entered is too long!");
+            }else{
+                System.out.println("The word entered is too short!");
+            }
             return false;
         }
 
-        try{
+        try{ // ADD CLOSE*****
             File dataFile = new File("ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
@@ -69,11 +69,14 @@ public class UserGuess {
             System.out.println("Problem reading file.");
             System.err.println("IOException: " + e.getMessage());
         }
-
         return false;
-
     }
 
+    /**
+     * Returns the value of the user's guess
+     *
+     * @return - user guess
+     */
     public String getGuess(){
         return guess;
     }
