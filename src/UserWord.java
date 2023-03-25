@@ -2,39 +2,37 @@ import java.io.*;
 import java.util.Scanner;
 
 /*
- * UserGuess.java
- * UserGuess class contains methods to receive the user's input and determine its validity
+ * UserWord.java
+ * UserWord class contains methods to receive the user's input and determine its validity
  * Owen Wang
  * Last Edited: 25/03/2023
  */
-public class UserGuess {
+public class UserWord {
 
     Scanner sc;
     FileReader in;
     BufferedReader br;
 
-    String guess;
+    String word;
     String lineOfText;
 
     /**
      * Constructor
-     * Gives guess and lineOFText default values
+     * Gives word and lineOfText default values
      */
-    public UserGuess(){
-        guess = "";
+    public UserWord(){
+        word = "";
         lineOfText = "";
-        setGuess();
     }
 
     /**
      * Prompts the user for their guess
-     * Stores guess in the guess variable
+     * Stores guess in the word variable
      */
     public void setGuess(){
         sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
-        guess = sc.next();
-        System.out.println(checkValidity());
+        word = sc.next();
     }
 
     /**
@@ -42,8 +40,8 @@ public class UserGuess {
      * @return - validity of guess
      */
     public boolean checkValidity(){
-        if(guess.length() != 5){ //determines if word length is valid
-            if(guess.length() > 5){
+        if(word.length() != 5){ //determines if word length is valid
+            if(word.length() > 5){
                 System.out.println("The word entered is too long!");
             }else{
                 System.out.println("The word entered is too short!");
@@ -56,7 +54,7 @@ public class UserGuess {
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
             while((lineOfText = br.readLine()) != null){
-                if(lineOfText.equals(guess)){
+                if(lineOfText.equals(word)){
                     return true;
                 }
             }
@@ -74,7 +72,7 @@ public class UserGuess {
      * Returns the value of the user's guess
      * @return - user guess
      */
-    public String getGuess(){
-        return guess;
+    public String getWord(){
+        return word;
     }
 }

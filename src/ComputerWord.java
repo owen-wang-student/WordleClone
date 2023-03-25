@@ -1,8 +1,8 @@
 import java.io.*;
 
 /*
- * ComputerGuess.java
- * ComputerGuess class determines the computer generated word
+ * ComputerWord.java
+ * ComputerWord class determines the computer generated word
  * Owen Wang
  * Last Edited 25/03/2023
  */
@@ -16,13 +16,12 @@ public class ComputerWord {
 
     /**
      * Constructor
-     * Gives word a default value
+     * Gives word and lineOfText default values
      */
     ComputerWord(){
         word = "";
         lineOfText = "";
         setWord(generateRandom(countWords()));
-        System.out.println(getWord());
     }
 
     /**
