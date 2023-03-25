@@ -5,7 +5,7 @@ import java.util.Scanner;
  * UserGuess.java
  * UserGuess class contains methods to receive the user's input and determine its validity
  * Owen Wang
- * Last Edited: 24/03/2023
+ * Last Edited: 25/03/2023
  */
 public class UserGuess {
 
@@ -39,7 +39,6 @@ public class UserGuess {
 
     /**
      * Checks the validity of word
-     *
      * @return - validity of guess
      */
     public boolean checkValidity(){
@@ -58,7 +57,6 @@ public class UserGuess {
             br = new BufferedReader(in);
             while((lineOfText = br.readLine()) != null){
                 if(lineOfText.equals(guess)){
-                    System.out.println("VALID");
                     return true;
                 }
             }
@@ -74,7 +72,6 @@ public class UserGuess {
 
     /**
      * Returns the value of the user's guess
-     *
      * @return - user guess
      */
     public String getGuess(){
