@@ -7,6 +7,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        UserGuess NewWordle = new UserGuess();
+        UserGuess guess = new UserGuess();
+        ComputerWord word = new ComputerWord();
     }
 }
