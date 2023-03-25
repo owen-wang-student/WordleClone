@@ -16,7 +16,7 @@ public class GameInformation {
 
         UserGuess userInput = new UserGuess();
         input = userInput.getGuess();
-        ComputerInformation computerInput = new ComputerInformation();
+        ComputerWord computerInput = new ComputerWord();
         computer = computerInput.getWord();
 
         if(input.equals(computer)){
