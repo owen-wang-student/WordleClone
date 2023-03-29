@@ -7,6 +7,8 @@
 
 public class Main {
     public static void main(String[] args) {
-        GameLoop g = new GameLoop();
+        UserWord u = new UserWord();
+        u.setGuess();
+        System.out.println(u.checkValidity());
     }
 }

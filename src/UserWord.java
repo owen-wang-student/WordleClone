@@ -50,7 +50,7 @@ public class UserWord {
         }
 
         try{ // ADD CLOSE*****
-            File dataFile = new File("ValidWords.txt");
+            File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
             while((lineOfText = br.readLine()) != null){
