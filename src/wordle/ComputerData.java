@@ -1,12 +1,14 @@
+package wordle;
+
 import java.io.*;
 
 /*
- * ComputerWord.java
- * ComputerWord class determines the computer generated word
+ * wordle.ComputerData.java
+ * wordle.ComputerData class determines the computer generated word
  * Owen Wang
  * Last Edited 25/03/2023
  */
-public class ComputerWord {
+public class ComputerData {
 
     FileReader in;
     BufferedReader br;
@@ -18,10 +20,9 @@ public class ComputerWord {
      * Constructor
      * Gives word and lineOfText default values
      */
-    ComputerWord(){
+    ComputerData(){
         word = "";
         lineOfText = "";
-        setWord(generateRandom(countWords()));
     }
 
     /**
@@ -32,7 +33,7 @@ public class ComputerWord {
         int count = 0;
 
         try{
-            File dataFile = new File("ValidWords.txt");
+            File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
             while((lineOfText = br.readLine()) != null){
@@ -64,7 +65,7 @@ public class ComputerWord {
         int count = 0;
 
         try{
-            File dataFile = new File("ValidWords.txt");
+            File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
             while(count < lineNumber){

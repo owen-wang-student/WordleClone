@@ -1,47 +1,52 @@
+package wordle;
+
 import java.io.*;
 import java.util.Scanner;
 
 /*
- * UserWord.java
- * UserWord class contains methods to receive the user's input and determine its validity
+ * wordle.UserData.java
+ * wordle.UserData class contains methods to receive the user's input and determine its validity
  * Owen Wang
  * Last Edited: 25/03/2023
  */
-public class UserWord {
+public class UserData {
 
     Scanner sc;
     FileReader in;
     BufferedReader br;
 
-    String word;
+    String guess;
     String lineOfText;
 
     /**
      * Constructor
-     * Gives word and lineOfText default values
+     * Gives guess and lineOfText default values
      */
-    public UserWord(){
-        word = "";
+    public UserData(){
+        guess = "";
         lineOfText = "";
     }
 
     /**
      * Prompts the user for their guess
-     * Stores guess in the word variable
+     * Stores guess in the guess variable
      */
     public void setGuess(){
-        sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
-        word = sc.next();
+        guess = sc.next();
+        if(!checkValidity()){
+            setGuess();
+        }
     }
 
     /**
-     * Checks the validity of word
+     * Checks the validity of guess
      * @return - validity of guess
      */
-    public boolean checkValidity(){
-        if(word.length() != 5){ //determines if word length is valid
-            if(word.length() > 5){
+    public boolean checkValidity() {
+        if(guess.length() != 5){ //determines if word length is valid
+            if(guess.length() > 5){
                 System.out.println("The word entered is too long!");
             }else{
                 System.out.println("The word entered is too short!");
@@ -49,12 +54,12 @@ public class UserWord {
             return false;
         }
 
-        try{ // ADD CLOSE*****
+        try{
             File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
             while((lineOfText = br.readLine()) != null){
-                if(lineOfText.equals(word)){
+                if(lineOfText.equals(guess)){
                     return true;
                 }
             }
@@ -72,7 +77,7 @@ public class UserWord {
      * Returns the value of the user's guess
      * @return - user guess
      */
-    public String getWord(){
-        return word;
+    public String getGuess(){
+        return guess;
     }
 }
