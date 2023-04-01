@@ -1,3 +1,3 @@
 # WordleClone
 
-Clone of the famous Wordle game using the Java FX library and object-oriented programming
+Clone of the famous Wordle game using the Java Swing library and object-oriented programming
