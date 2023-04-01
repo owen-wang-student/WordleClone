@@ -4,8 +4,8 @@ import java.io.*;
 import java.util.Scanner;
 
 /*
- * wordle.UserData.java
- * wordle.UserData class contains methods to receive the user's input and determine its validity
+ * UserData.java
+ * UserData class contains methods to receive the user's input and determine its validity
  * Owen Wang
  * Last Edited: 25/03/2023
  */
@@ -32,7 +32,7 @@ public class UserData {
      * Stores guess in the guess variable
      */
     public void setGuess(){
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
         if(!checkValidity()){
@@ -58,7 +58,7 @@ public class UserData {
             File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
-            while((lineOfText = br.readLine()) != null){
+            while((lineOfText = br.readLine()) != null){ //determines if word is in valid words list
                 if(lineOfText.equals(guess)){
                     return true;
                 }
