@@ -3,10 +3,10 @@ package wordle;
 import java.io.*;
 
 /*
- * wordle.ComputerData.java
- * wordle.ComputerData class determines the computer generated word
+ * ComputerData.java
+ * ComputerData class determines the computer generated word
  * Owen Wang
- * Last Edited 25/03/2023
+ * Last Edited 03/04/2023
  */
 public class ComputerData {
 
@@ -30,13 +30,13 @@ public class ComputerData {
      * @return - number of words in the text file
      */
     public int countWords(){
-        int count = 0;
+        int count = 0; // number of words in the text fiel
 
         try{
             File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
-            while((lineOfText = br.readLine()) != null){
+            while((lineOfText = br.readLine()) != null){ //read until nothing left
                 count += 1;
             }
         } catch (FileNotFoundException e) {
@@ -68,7 +68,7 @@ public class ComputerData {
             File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
-            while(count < lineNumber){
+            while(count < lineNumber){ //set word to the nth word int he text file
                 word = br.readLine();
                 count += 1;
             }

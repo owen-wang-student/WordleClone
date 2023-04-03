@@ -7,7 +7,7 @@ import java.util.Scanner;
  * UserData.java
  * UserData class contains methods to receive the user's input and determine its validity
  * Owen Wang
- * Last Edited: 25/03/2023
+ * Last Edited: 03/04/2023
  */
 public class UserData {
 
@@ -56,9 +56,9 @@ public class UserData {
         }
 
         try{
-            File dataFile = new File("src/res/ValidWords.txt");
-            in = new FileReader(dataFile);
-            br = new BufferedReader(in);
+            File dataFile = new File("src/res/ValidWords.txt"); //create file
+            in = new FileReader(dataFile); // create file reader
+            br = new BufferedReader(in); // create buffered reader
             while((lineOfText = br.readLine()) != null){ //determines if word is in valid words list
                 if(lineOfText.equals(guess)){
                     return true;
