@@ -35,6 +35,7 @@ public class UserData {
         sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
+
         if(!checkValidity()){
             setGuess();
         }
