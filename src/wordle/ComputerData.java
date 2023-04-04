@@ -13,7 +13,7 @@ public class ComputerData {
     FileReader in;
     BufferedReader br;
 
-    String word;
+    String word; // computer generated word
     String lineOfText;
 
     /**
@@ -30,7 +30,7 @@ public class ComputerData {
      * @return - number of words in the text file
      */
     public int countWords(){
-        int count = 0; // number of words in the text fiel
+        int count = 0; // number of words in the text file
 
         try{
             File dataFile = new File("src/res/ValidWords.txt");
@@ -60,6 +60,7 @@ public class ComputerData {
 
     /**
      * Randomly generates the value of a word from a list of valid words
+     * @param lineNumber - the line number of the randomly generated word
      */
     public void setWord(int lineNumber) {
         int count = 0;
@@ -68,7 +69,8 @@ public class ComputerData {
             File dataFile = new File("src/res/ValidWords.txt");
             in = new FileReader(dataFile);
             br = new BufferedReader(in);
-            while(count < lineNumber){ //set word to the nth word int he text file
+
+            while(count < lineNumber){ //set word to the nth word in the text file
                 word = br.readLine();
                 count += 1;
             }

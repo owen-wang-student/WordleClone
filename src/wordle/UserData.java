@@ -15,7 +15,7 @@ public class UserData {
     FileReader in;
     BufferedReader br;
 
-    String guess;
+    String guess; // user guess
     String lineOfText;
 
     /**
@@ -35,8 +35,9 @@ public class UserData {
         sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
+        guess = guess.toLowerCase(); // change to lower case
 
-        if(!checkValidity()){
+        if(!checkValidity()){ // if the guess is invalid
             setGuess();
         }
     }
@@ -59,6 +60,7 @@ public class UserData {
             File dataFile = new File("src/res/ValidWords.txt"); //create file
             in = new FileReader(dataFile); // create file reader
             br = new BufferedReader(in); // create buffered reader
+
             while((lineOfText = br.readLine()) != null){ //determines if word is in valid words list
                 if(lineOfText.equals(guess)){
                     return true;
@@ -71,6 +73,7 @@ public class UserData {
             System.out.println("Problem reading file.");
             System.err.println("IOException: " + e.getMessage());
         }
+        System.out.println("Guess is not a valid word");
         return false;
     }
 
