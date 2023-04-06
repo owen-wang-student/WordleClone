@@ -1,3 +1,3 @@
 # WordleClone
 
-Clone of the famous Wordle game using the Java Swing library and object-oriented programming
+Replication of the famous Wordle game using the Java Swing library, bject-oriented programming, and the model, view, controller architechture.
