@@ -7821,7 +7821,7 @@ mocky
 mocos
 mocus
 modal
-model
+wordle.model
 modem
 moder
 modes
