@@ -25,6 +25,16 @@ public class UserData {
     public UserData(){
         guess = "";
         lineOfText = "";
+        sc = new Scanner(System.in);
+
+        try {
+            File dataFile = new File("src/res/ValidWords.txt"); //create file
+            in = new FileReader(dataFile); // create file reader
+            br = new BufferedReader(in); // create buffered reader
+        }catch(FileNotFoundException e) {
+            System.out.println("File not found");
+            System.err.println("FileNotFoundException:" + e.getMessage());
+        }
     }
 
     /**
@@ -32,7 +42,6 @@ public class UserData {
      * Stores guess in the guess variable
      */
     public void setGuess(){
-        sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
         guess = guess.toLowerCase(); // change to lower case
@@ -57,22 +66,16 @@ public class UserData {
         }
 
         try{
-            File dataFile = new File("src/res/ValidWords.txt"); //create file
-            in = new FileReader(dataFile); // create file reader
-            br = new BufferedReader(in); // create buffered reader
-
             while((lineOfText = br.readLine()) != null){ //determines if word is in valid words list
                 if(lineOfText.equals(guess)){
                     return true;
                 }
             }
-        } catch(FileNotFoundException e){
-            System.out.println("File not found");
-            System.err.println("FileNotFoundException:" + e.getMessage());
         } catch (IOException e) {
             System.out.println("Problem reading file.");
             System.err.println("IOException: " + e.getMessage());
         }
+
         System.out.println("Guess is not a valid word");
         return false;
     }
