@@ -7,7 +7,7 @@ import java.util.Scanner;
  * UserData.java
  * UserData class contains methods to receive the user's input and determine its validity
  * Owen Wang
- * Last Edited: 03/04/2023
+ * Last Edited: 08/04/2023
  */
 public class UserData {
 
@@ -15,7 +15,7 @@ public class UserData {
     FileReader in;
     BufferedReader br;
 
-    String guess; // user guess
+    String guess; //user guess
     String lineOfText;
 
     /**
@@ -25,16 +25,6 @@ public class UserData {
     public UserData(){
         guess = "";
         lineOfText = "";
-        sc = new Scanner(System.in);
-
-        try {
-            File dataFile = new File("src/res/ValidWords.txt"); //create file
-            in = new FileReader(dataFile); // create file reader
-            br = new BufferedReader(in); // create buffered reader
-        }catch(FileNotFoundException e) {
-            System.out.println("File not found");
-            System.err.println("FileNotFoundException:" + e.getMessage());
-        }
     }
 
     /**
@@ -42,11 +32,12 @@ public class UserData {
      * Stores guess in the guess variable
      */
     public void setGuess(){
+        sc = new Scanner(System.in);
         System.out.println("Please enter a word:");
         guess = sc.next();
-        guess = guess.toLowerCase(); // change to lower case
+        guess = guess.toLowerCase(); //change to lower case
 
-        if(!checkValidity()){ // if the guess is invalid
+        if(!checkValidity()){ //if the guess is invalid
             setGuess();
         }
     }
@@ -66,11 +57,18 @@ public class UserData {
         }
 
         try{
+            File dataFile = new File("src/res/ValidWords.txt"); //create file
+            in = new FileReader(dataFile); //create file reader
+            br = new BufferedReader(in); //create buffered reader
+
             while((lineOfText = br.readLine()) != null){ //determines if word is in valid words list
                 if(lineOfText.equals(guess)){
                     return true;
                 }
             }
+        } catch(FileNotFoundException e){
+            System.out.println("File not found");
+            System.err.println("FileNotFoundException:" + e.getMessage());
         } catch (IOException e) {
             System.out.println("Problem reading file.");
             System.err.println("IOException: " + e.getMessage());
