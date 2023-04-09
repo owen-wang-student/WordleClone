@@ -20,7 +20,7 @@ public class ComputerData {
      * Constructor
      * Gives word and lineOfText default values
      */
-    ComputerData(){
+    public ComputerData(){
         word = "";
         lineOfText = "";
     }
